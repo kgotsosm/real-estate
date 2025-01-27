@@ -17,22 +17,21 @@ function getPropertyHtml(propertiesArr = placeholderPropertyObj) {
     - .reduce() DONE
     - Default parameters DONE
     */
-  const { propertyLocation, priceGBP, roomsM2, comment, image } = propertiesArr;
-
-
 
   const propertyCard = propertiesArr.map((property) => {
-    
+
+    const { propertyLocation, priceGBP, roomsM2, comment, image } = property;
+
     const totalM2 = property.roomsM2.reduce((total, m2) => total + m2, 0)
     
     return `
             <section class="card">
-        <img src="/images/${property.image}" alt="${property.propertyLocation}">
+        <img src="/images/${image}" alt="${propertyLocation}">
         <div class="card-right">
-            <h2>${property.propertyLocation}</h2>
-            <h3>£${property.priceGBP}</h3>
+            <h2>${propertyLocation}</h2>
+            <h3>£${priceGBP}</h3>
+            <p>${comment}</p>
             <h3>${totalM2} m&sup2;</h3>
-            <p>${property.comment}</p>
             
         </div>
     </section> `
